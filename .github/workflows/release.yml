@@ -19,6 +19,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
         run: |
           REPO=coderpatros/openvscode-server
-          docker build -f Dockerfile -t $REPO:latest .
+          docker build -f Dockerfile -t ghcr.io/$REPO:latest .
           docker login ghcr.io --username coderpatros --password "${{ secrets.PUBLISH_TOKEN }}"
           docker push ghcr.io/$REPO:latest
