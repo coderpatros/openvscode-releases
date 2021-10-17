@@ -1,0 +1,26 @@
+name: Publish Docker Image
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    branches:
+      - main    
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-20.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - name: Build & Publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+        run: |
+          REPO=coderpatros/openvscode-server
+          docker build -f Dockerfile -t $REPO:latest .
+          docker login ghcr.io --username coderpatros --password "$PUBLISH_TOKEN"
+          docker push ghcr.io/$REPO:latest
