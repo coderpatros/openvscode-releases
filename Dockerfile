@@ -1,10 +1,12 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 ARG RELEASE_TAG
 
 ARG USERNAME=openvscode-server
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && \
     apt install -y git wget sudo && \
@@ -30,7 +32,7 @@ RUN chmod g+rw /home && \
 
 USER $USERNAME
 
-WORKDIR /home/workspace/
+WORKDIR /workspace/
 
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
