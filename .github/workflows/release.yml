@@ -20,5 +20,5 @@ jobs:
         run: |
           REPO=coderpatros/openvscode-server
           docker build -f Dockerfile -t ghcr.io/$REPO:latest .
-          docker login ghcr.io --username coderpatros --password "${{ secrets.PUBLISH_TOKEN }}"
+          echo "${{ secrets.PUBLISH_TOKEN }}" | docker login ghcr.io -u coderpatros --password-stdin
           docker push ghcr.io/$REPO:latest
