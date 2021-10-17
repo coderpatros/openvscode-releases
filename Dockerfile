@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-ARG RELEASE_TAG
+ARG RELEASE_TAG=openvscode-server-v1.61.0
 
 ARG USERNAME=openvscode-server
 ARG USER_UID=1000
