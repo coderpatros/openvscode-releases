@@ -1,5 +1,7 @@
 FROM ubuntu:20.04
 
+LABEL org.opencontainers.image.source https://github.com/coderpatros/openvscode-server
+
 ARG RELEASE_TAG=openvscode-server-v1.61.0
 
 ARG USERNAME=openvscode-server
